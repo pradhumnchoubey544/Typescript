@@ -1,0 +1,333 @@
+typscript is inhande of js & it will not compiled in brouser so it will convert into js at last 
+we write typescript code ---------> it compiled and convert in js --------->then it run on brouser
+
+Q why again we are convering typescript into js then why would we not write js code only ?
+Ans: becouse  when we are using typescript we can cheak error at compiled time only but in js type error will come at runtime and we can not define all veriable type from before
+
+
+# with typescript we add objectOrianted programing also this help us to make classes,interface, clasess inside function that leads to manage over code .
+
+Q why to use tyopescript?
+ex:= 
+function add(num1,num2)
+{
+    retunr num1+num2;
+}
+console.log(add('2','3'))// '23' // whare we not sure will output 5 or 23 just becouse of typeisnotdegine.
+so by typescript we predefine type of number.
+
+                                              
+
+
+how to install typescript 
+"npm insts"
+
+#spellcheck used for spalling cheak
+#"material icon theme" this will put icon for every file which give better understing about file & folder
+
+#Three main type in typescript:- 
+number:- which take 12,13.4
+string:- which take 'a',"a",`a`
+boolean:- which take true & false
+
+
+# what is type inference ?
+ex: let a = 10; // in typescript if you define like this it not take any other value in "a" except number.
+but we define like this 
+let data; // so what its type ? its type is any mena you can assine any type of value in it .
+
+# you can make "spacific number type variable" also mena you can  not assine any other value excapt this:-
+ex:-  let data:5=5; // its ok but if you assine other then 5 it give error 
+data = 10; // error 
+
+#const data = 10; // hear type itself become 10 becouse we can not change value of data.
+
+
+#Object-Type use of define type of value it will take 
+Ex:- const user:{name:string;age:number;email:string}={name:"anil",age:12,email:"pradhumnchoubey@gmail.com"}
+console.log(user.name);
+but you have another object which have smae values like this upper object so Value is dublicate in both object how to solve it ??
+by:-
+type objType={name:string;age:number;email:string}
+const person:objType={
+    name:"anil",
+    age:12,
+    email:"pradhumnchoubey@gmail.com"
+}
+const son:objType={
+    name:"rohon",
+    age:2,
+    email:"pradhumnchoubey@gmail.com"
+}
+if grup of object have some veraible we can define there type like this.
+
+
+#ArrayType:- you now js array will take all type of data but if you want to insert one type of data onely you can make it posible 
+Ex= let arr:[string]=["ram","shyam","sita","gita"]; // but it will not take any other type of value 
+but js array will take any type of data in that case you use "any" 
+Ex= let newArray:any[]=["abc",123,true]; // it will take all type of data.
+alos if over array only have two type of data let's say number & string you can dafine like this 
+Ex= let arr:string[] | number[]=["ram","shyam","sita","gita"]; // it will take only two type of data 
+
+
+#Tuple:- it is kind of array only but more advanced we can define each value type 
+Ex:- let role:[string,string,number,number,boolean?] = ['admin','manager',1,3] // hear we define boolean? becouse at present no value for boolean 
+and all this type is define in sequence and length is fixed 
+role.push(true)// now we are adding boolean value
+role[1]=10; // it give error 
+
+#enum :- it will assine number to each element in it
+Ex: enum Role{Admin,manager,reasonly,boss}
+console.log(Role.1) // Admin like this it will give value for each numbers second we can access all value by . all values will come
+
+
+#Any:- suppose you are geting data from api but you don't know the type of it then you cna use "any"
+you can use "any" with array also  "let data:any=[10,20];"
+but we not use "any" most offen
+
+#union:- if we are not which data will come between two or three type data or more you use "union"
+Ex:- function combine(a:number|string,b:number|string)
+     {if(typeof a === 'number' && typeof b ==='number'){retunr a+b;}else{return a.toString() + b.toString()}};
+     console.log(combine(10,20));
+     console.log(combine("shyam","choubey"));
+
+# if you now which type of value will come use "union" if you have no idea use "any"
+
+
+#Literal type:-it is simmeler to union but in union we define data but in Literal we assine values.
+ex:- function add(type:"rohon"|"sohon")
+{
+    if(type == "rohon")console.log("hello");
+    else if(type == "sohon")console.log("hii");
+}
+if we pass any other value except this two value it give error 
+
+
+#Type_alias:- it is union only but we create one veriable of it and use so we not want to more code 
+EX:- type varType = stirng | number | undefiend;
+let a : varType = 10;
+let b : varType = "hello";
+let c : varType = undefiend;
+
+#what is function type:- the type of value define by function as "retunr" is called functiontype
+EX:- function f1():number
+     {
+         return 20;
+     }
+
+Q can a function return type is "undefiend"
+
+#void:- nothing or any function not returmning any thing is called void
+ex:- function f1(){console.log("hello");}/// this functiuon is not returning any thing is called void functiuon
+
+#unknnown type in TS :- when we don't know type of any veriable we define "unknown" but this same thing happning with "any" alos so what is diff in both
+Q diff in "unknown" & "any" ?
+ans:by using "any" you stop the power of typescript so you can you that veriable like js.
+Ex:- let data:any; data = 20;data="hello";let item:string; item=data;   // no error 
+but "unknown" give you flexiblity to assine another type but you can not assine this veriabe to another diff type of veriable
+Ex:- let data:unknown; data = 20;data="hello";let item:string; item=data;   // error you can not assine "item=data;" become you can not assine unknown to any other type of veriabe whihc is "stirng" in this case
+*how to solve this issue*(by putting condition)
+let data:undefiend;
+data = 20;
+data = "hello"
+let item:string;
+if(typeof data === 'string')
+{item = data;} 
+/// in this way we solve it become last type of data is "string" so we can assine any string type value in it by puttign condition.
+
+
+
+#never type:- it is use as returntype of over function give error become bydefalut if you not return any thing from function it will retunr undefiend but in case of error we return "never"
+
+
+# if you too many filed of typescript you have to compile all at same time how you can do that ??
+Ans:- first generat tsconfig.json file and in terminal "ts -w".
+
+# Include & Exclude file:- this is use for not executing or executing a group of file.
+*if you want to execute group of file:- you can create array ""include":[ write name of file]"
+*if you want to not execute group of file:- you can create array ""exclude":[ write name of file]"
+*if you folder suppose "test.ts" how many time come it will not execute how you  ""exclude":["*/rest.ts"]"
+Q how can you run a one file only which is present at multiple places ?
+
+
+
+#Target Configuration :- when ever we convert over  TS file into JS file it compile based on which "ecmascript" we define in "tsconfig.json" that ""target":"es5" so we can change hear so based in that it get compile 
+it give bennefeat we can use latest tools like ES6 and other things
+
+
+#rooDir & outDir :- both are used to manage folder formant.
+outDir:-we define folder name so for each file what ever file will generate it stor in on wile which you define in which is located in tsconfig.json 
+rooDir:-if you want to compile particuler folder inside Ts only you can define that path in "tsconfig.json" folder 
+
+ 
+#code Quality improvement options:-there is some values in "tsconfig.json" you can assine them for spacing and all othere thing.
+
+
+#what is class?:- class is  user-define datatype like let,const but class is define by user for a object ,like we are talking about "user" it is object  and class carry name,sername,age,some method for making operation in user object  ecmascript 
+fruits is class and apple is object.
+
+
+#Class compilation with ES5 and ES5 :- where you write typescript code it will compile by "tsc" and convert into js code so it we use ES5 it will generate diff code ES6 diff code becouse soo many new things comes in ES6.
+Q what is diff in ES5 and Es6 :- form ES6 you can use oops concepts like classe and object and all.
+
+#Access modifier:- they are present every oops supporting language they are use to define accessiblity of all veriable and method present in class.
+public access modifier:- we can use it method and veriable outside and inside anywhere.
+private access modifier:-only use method and veriable inside the class only
+protected access modifier:- we use inside this class and its child class inside also the method and veriable.
+
+#this is use inside class to access all its globle veriable and methods.
+
+
+# Constructer and shorthand initilization :-constructer will exceute when object is created for particuler class and we can use constructer to assine value in particuler object .
+
+#Read only Vs private:- 
+Q diff in readonly and private ?
+ 
+
+-------------------------------------------------------------------------------------
+
+#tupiles[]
+#multitype(| union)[]
+#any
+#function return type 
+#anonumes function we not want to define type becouse it will take 
+#you can deifne each perameter type of function
+Ex: function f1(color:{name:string,code:stirng,index:number}){}
+f1({name:"white",code:"#fff",index:"1"}); // we can not change siquence also
+
+ #optional porperty: ex: function f1(name:'string',age?:"number",index:"number"){}
+ hear age it is optional if we want we send or not.
+
+#nerowing in typescript: you parameter type is diff and you are applying diff method it give error to solve it use.
+by "type" cheaking we solve this error
+function get(position:number|string)
+{
+    if(typeof position === "string"){console.log(position.split(" "));}else conso;e.log(position);
+}   
+get(12);
+
+#type assertion: if type of veriable is "any" letter we will assine it by some type
+const name :any="brad";
+const uppercase = (name as string).toUppercase();
+or
+const uppercase1 = (<string> name).toUppercase();
+in this two ways we assine type of any value which is before "any"
+
+
+#null & undefiend in typescript
+const numb:number = 10;
+const allnum = [{n1:11},{n1:12},{n1:13}];
+const findNum = allnum.find((num)=>{num.n1===numb}) ;
+console.log(findnum.n1); // coding time error "nothing in findnum.n1" 
+//becouse typescript cheak there is nothing inside findnum after doing "find" operation becouse no case match for "10" os how good type script is.
+
+
+# Non-null assertion operation - !
+
+# type-aliases :-
+Ex:-
+type mytype=number;
+const phone = mytype =20;  // i make my type
+
+Ex:-
+type Emp={
+    id:number,
+    name:string,
+    email:string,
+    salery:number
+   }
+const adem: Emp = {
+      id:123,
+      name:"adem",
+      email:"a@gmail.com",
+      salery:1000
+}
+
+
+# Nested-type :- we define one type and use another type.
+type Emp = {
+    id:number,
+    number:string,
+    emil:string,
+    salary:number,
+    address:string
+}
+type Department ={
+    name:string,
+    employee:Emp[],
+    age:number
+}
+type company={
+  companyName:string,
+  companyDepartment:Department()
+}
+ 
+
+#OR-operater
+Ex:- we can create in this way also 
+type ISBN = number | string; // hear you are creating or-alyeses type
+cosnt bookISBN = ISBN = 12345;
+cosnt bookISBN2 = ISBN = "ram";
+
+#Intercaction-OPerater (its use for extended the privies type)(inharitance)
+type user={
+    name:string,
+    age:number
+}
+type Admin = user & {
+    role:"admin",
+    blood:string
+}
+type Customer= user & {
+    role:"customer",
+    phone:number
+
+}
+cosnt admin: Admin={
+    name:"rohon",
+    age:12,
+    role:"admin",
+    blood:"O+"
+}
+
+
+# Type-alirses using templeat Literal
+ex:
+const name :string="rohon";
+const wish:string = `good moring ${name}`;
+console.log(wish);
+
+type wish = "good moring ${city}";
+const newwish = wish = "good mumbai morning"; // compile time error
+const yyy = wish = "good morning mumbai"; // no-error
+
+
+
+#type-asyeses-function
+type calc = (a:number,b:number)=>number;
+const sum: calc=(p,q)=>p+q;  // by "calc" type we are deriving new function type.
+const mul: calc=(p,q)=>p*q;  // by "calc" type we are deriving new function type.
+console.log(sum(2,3));
+console.lag(mul(3,4));
+
+
+# interface: this are also for  
+
+
+
+
+
+# nerowing:- there are a multiple approch to achive narrowing :
+1. using the "typeof" type guard
+2.using the "equality" operater
+3.using the "in" operater
+4.using the "type predicates"
+5.using the "discriminated unions"
+
+
+
+
+
+
+
+and interface
