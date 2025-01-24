@@ -324,10 +324,50 @@ console.lag(mul(3,4));
 4.using the "type predicates"
 5.using the "discriminated unions"
 
+@ your typescript code will convert into js then only borwser will understand.
+@ typescript build on top of js 
+@ in js we got error ar runtime but in java we will got error on compile time so we can correct but in js we can not so we use typescript which will give typeError at the time of core writing by editer (VS code) only so it is good coding standerd.
+@ by imprting typescript package and creat file with .tsx typescript will activate and ex:- console.log("name".tolowercase().toNumber()); // ts will chack each mathod we apply based on type string or number it give error 
+
+@ what are basic way to assine type in ts   let foo : string = "hello";
+@ one type is not assine to another type    let koo : string = foo; // error 
+
+Q what is impleset and explicity type in typescript ?
+ans:- 
+explicity:- let a : stirng = "hello";
+impleset:-  let a = "hello"; a = 10 // error // ts automaticly assine type.
+
+@ how to assine type to array ??
+
+Q how to define type for function
+ans:     
+  let a = (aa:string , bb:string ):number =>{ console.log(aa+bb); retunr 100;} 
+
+Q custome type how to creat by interface.
+ans: for reusablity we define interface and use where we need by name "User"
+interface User {id:number;
+                name:stirng
+               }
+ const user:User ={id:1 , name:'rohon'}   
+ or 
+ let fun = (user:User):number=>{return 10;}
 
 
 
 
+Q we can define over on "type" also 
+ans: type ID : number;
+     let k :ID = 100;
+     let j :ID = 200;
+     so we not want to define type all places so change at one place change all veriable type instead of "number" to "string"
 
 
-and interface
+Q diff in interface and type  ?
+ans: we can replace interface work with type but 
+
+Q why to use typescript ? js is not structly type so by using typescript we can define all verable/object with peorper type so there is will no arror at run time.
+Q diff in interface and type ? when should we use each of them ??
+Q what is generic type ?
+Q what are private field in typescript ?
+Q diff in  naver/null/any in typescript ?
+Q when to use declear keyword in typescript ?
